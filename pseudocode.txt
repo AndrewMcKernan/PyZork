@@ -1,0 +1,11 @@
+When the player enters a room with an enemy in it,
+	-immediately enter combat
+Can only leave combat if:
+	-enemy alive == false
+	-player leaves room (conditions on this?)
+
+Combat mode:
+	player options are:
+		attack
+		parry/defend
+		run

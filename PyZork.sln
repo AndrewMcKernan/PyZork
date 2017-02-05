@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PyZork", "PyZork.pyproj", "{B974FEEA-4399-46DB-BD4F-6C45139178F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|0x86 = Debug|0x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|0x86 = Release|0x86
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B974FEEA-4399-46DB-BD4F-6C45139178F9}.Debug|0x86.ActiveCfg = Debug|Any CPU
+		{B974FEEA-4399-46DB-BD4F-6C45139178F9}.Debug|0x86.Deploy.0 = Debug|Any CPU
+		{B974FEEA-4399-46DB-BD4F-6C45139178F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B974FEEA-4399-46DB-BD4F-6C45139178F9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B974FEEA-4399-46DB-BD4F-6C45139178F9}.Release|0x86.ActiveCfg = Release|Any CPU
+		{B974FEEA-4399-46DB-BD4F-6C45139178F9}.Release|0x86.Deploy.0 = Release|Any CPU
+		{B974FEEA-4399-46DB-BD4F-6C45139178F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B974FEEA-4399-46DB-BD4F-6C45139178F9}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

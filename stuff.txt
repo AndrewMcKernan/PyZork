@@ -1,0 +1,14 @@
+Done: 
+Movement
+Pick up/drop items
+error message upon attempting to move through non-traversable terrain (just add
+message for each room direction)
+
+Need:
+Create enemies - done?
+Create combat
+Design world:
+	-win conditions
+	-create map
+	
+	
