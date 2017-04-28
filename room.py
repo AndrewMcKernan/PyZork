@@ -13,7 +13,6 @@ class Room():
 		self.description = description
 		self.coordinates = coordinates # [x,y,z]
 		# items is a dictionary of Items
-		#self.items = []
 		self.items = {}
 		self.errors = []
 		self.enemies = []
@@ -36,6 +35,13 @@ class Room():
 		else:
 			return "{}".format(self.errors[direction])
 	
+	def printEnemyBlockPath(self):
+		enemyString = ""
+		for enemy in self.enemies:
+			enemyString += enemy.GetName() + ", "
+		print("A " + enemyString[:-2] + " blocks your path.")
+
+
 	def get_name(self):
 		return self.name
 		
@@ -45,6 +51,10 @@ class Room():
 	def printItems(self):
 		for items in self.dict_of_items().keys():
 			print("There is a " + self.dict_of_items()[items].get_name() + " here.")
+
+	def printRoom(self):
+		print(self.get_name)
+		printItems(self)
 		
 	def set_coordinates(self, coordinates):
 		if type(coordinates) is not list:
@@ -59,6 +69,9 @@ class Room():
 			ValueError("Object is not an item")
 		#print('Dropped', item.get_name(), '.')
 		self.items[item.get_name().lower()] = item
+
+	def addEnemy(self, enemy):
+		self.enemies.append(enemy)
 		
 	def retrieve_item(self, itemName, player):
 		for item in self.dict_of_items().values():
@@ -71,3 +84,6 @@ class Room():
 		
 	def dict_of_items(self):
 		return self.items
+
+	def getListOfEnemies(self):
+		return self.enemies

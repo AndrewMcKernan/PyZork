@@ -9,10 +9,14 @@ class Player():
 		# self.inventory = []
 		self.inventory = {}
 		self.speed = 10
-		self.armor = 10
+		self.armor = 0
 		self.current_room = room
 		self.location = [0,0,0]
 		self.map = _map
+		self.attackPower = 1
+		self.alive = True
+		self.weapon = None
+		
 	
 	def __str__(self):
 		return "{}".format(self.current_room.get_coordinates())
@@ -23,19 +27,34 @@ class Player():
 	def move(self, direction):
 		directions = {'n':[1,1],'north':[1,1],'s':[1,-1],'south':[1,-1],'e':[0,-1],'east':[0,-1],'w':[0,1],'west':[0,1],'up':[2,1],'u':[2,1],'down':[2,-1],'d':[2,-1]}
 		
+		if len(self.current_room.getListOfEnemies()) != 0:
+			self.current_room.printEnemyBlockPath()
+			return
+
 		self.location[directions[direction][0]] += directions[direction][1]
-		for r in self.map.neighbours(self.current_room):
-			if r.get_coordinates() == str(self.location):
-				self.current_room = r
+		for room in self.map.neighbours(self.current_room):
+			if room.get_coordinates() == str(self.location):
+				self.current_room = room
 				if not self.current_room.visited:
 					self.printLocation('')
 					self.current_room.visited = True
 				else:
-					print(self.current_room.get_name())
-					self.current_room.printItems()
+					self.printLocation('')
 				return
 		self.location[directions[direction][0]] -= directions[direction][1]
-		print(r.print_error(direction))
+		print(room.print_error(direction))
+
+	def TakeDamage(self, damageValue):
+		self.hp -= damageValue - self.armor
+		if self.hp <= 0:
+			print("You're dead!")
+			# end the game somehow
+
+	def Attack(self):
+		if (self.weapon == None):
+			return self.attackPower
+		else:
+			return self.weapon.damageOutput() + self.attackPower
 
 	def printLocation(self, inputStr):
 		print(self.current_room)
@@ -71,8 +90,8 @@ class Player():
 			self.dropAll()
 		elif itemName in self.inventory.keys():
 			self.current_room.add_item(self.inventory[itemName])
+			print('Dropped ' + self.inventory[itemName].get_name() + '.')
 			del self.inventory[itemName]
-			print('Dropped ' + itemName + '.')
 		else:
 			print('You aren\'t carrying a \"' + itemName + '\".')
 
@@ -80,5 +99,15 @@ class Player():
 		for itemName in list(self.inventory.keys()):
 			self.drop(itemName)
 
-	def doNothing(inputStr):
+	def doNothing(self, inputStr):
 		print('')
+
+	def Combat(self, target):
+		if (self.speed >= enemy.GetSpeed()):
+			enemy.TakeDamage(self.attackPower)
+			if (enemy.IsAlive()):
+				TakeDamage(enemy.GetAttackPower())
+		else:
+			TakeDamage(enemy.GetAttackPower())
+			if (self.alive):
+				enemy.TakeDamage(self.attackPower)
