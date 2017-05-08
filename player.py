@@ -16,6 +16,7 @@ class Player():
 		self.attackPower = 1
 		self.alive = True
 		self.weapon = None
+		self.Attacking = False
 		
 	
 	def __str__(self):
@@ -50,11 +51,29 @@ class Player():
 			print("You're dead!")
 			# end the game somehow
 
-	def Attack(self):
+	def GetCurrentRoom(self):
+		return self.current_room
+
+	def Attack(self, inputstring):
+		self.Attacking = True
+
+	def IsAttacking(self):
+		return self.Attacking
+
+	def SetAttacking(self, attacking):
+		self.Attacking = attacking
+
+	def DealDamage(self):
 		if (self.weapon == None):
 			return self.attackPower
 		else:
 			return self.weapon.damageOutput() + self.attackPower
+
+	def IsAlive(self):
+		return self.alive
+
+	def GetSpeed(self):
+		return self.speed
 
 	def printLocation(self, inputStr):
 		print(self.current_room)
@@ -102,12 +121,12 @@ class Player():
 	def doNothing(self, inputStr):
 		print('')
 
-	def Combat(self, target):
-		if (self.speed >= enemy.GetSpeed()):
-			enemy.TakeDamage(self.attackPower)
-			if (enemy.IsAlive()):
-				TakeDamage(enemy.GetAttackPower())
-		else:
-			TakeDamage(enemy.GetAttackPower())
-			if (self.alive):
-				enemy.TakeDamage(self.attackPower)
+	#def Combat(self, target):
+	#	if (self.speed >= enemy.GetSpeed()):
+	#		enemy.TakeDamage(self.attackPower)
+	#		if (enemy.IsAlive()):
+	#			TakeDamage(enemy.GetAttackPower())
+	#	else:
+	#		TakeDamage(enemy.GetAttackPower())
+	#		if (self.alive):
+	#			enemy.TakeDamage(self.attackPower)

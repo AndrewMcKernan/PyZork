@@ -1,4 +1,5 @@
 from items import *
+#from engine import Combat
 
 class Room():
 	
@@ -87,3 +88,25 @@ class Room():
 
 	def getListOfEnemies(self):
 		return self.enemies
+
+	def Combat(self, player, enemy):
+		if (player.GetSpeed() >= enemy.GetSpeed() and player.IsAttacking()):
+			print("You attack, dealing " + str(player.DealDamage()) + " damage.")
+			enemy.TakeDamage(player.DealDamage())
+			if (enemy.IsAlive()):
+				print("You are hit, taking " + str(enemy.GetAttackPower()) + " damage.")
+				player.TakeDamage(enemy.GetAttackPower())
+		else:
+			print("You are hit, taking " + str(enemy.GetAttackPower()) + " damage.")
+			player.TakeDamage(enemy.GetAttackPower())
+			if (player.IsAlive() and player.IsAttacking()):
+				print("You attack, dealing " + str(player.DealDamage()) + " damage.")
+				enemy.TakeDamage(self.attackPower)
+				
+		player.SetAttacking(False)
+
+	def Events(self, player):
+		for enemy in self.enemies:
+			self.Combat(player, enemy)
+			if not enemy.IsAlive():
+				self.enemies.remove(enemy)
