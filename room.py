@@ -89,6 +89,10 @@ class Room():
 	def getListOfEnemies(self):
 		return self.enemies
 
+	def printEnemies(self):
+		for enemy in self.enemies:
+			print(enemy)
+
 	def Combat(self, player, enemy):
 		if (player.GetSpeed() >= enemy.GetSpeed() and player.IsAttacking()):
 			print("You attack, dealing " + str(player.DealDamage()) + " damage.")

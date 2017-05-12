@@ -78,6 +78,7 @@ class Player():
 	def printLocation(self, inputStr):
 		print(self.current_room)
 		self.current_room.printItems()
+		self.current_room.printEnemies()
 
 	def print_inventory(self, inputStr):
 		if len(self.inventory.keys()) == 0:
